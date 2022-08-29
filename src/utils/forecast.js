@@ -11,8 +11,8 @@ const forecast = (latitude,longitude, callback) => {
       const { code:errorCode, type:errorType, info:errorInfo} = body.error
       callback('error: '+errorCode+' type: '+errorType+' information: '+errorInfo, undefined)
     } else {
-      const { location: { country: location, timezone_id: timeZone, localtime: time }, current: { weather_descriptions:weatherDescription,temperature:temp,precip} }= body
-      callback(undefined, weatherDescription +', It is currently '+temp+ ' celcius degrees out.'+'There is a '+precip+ '% chance of rain.')
+      const { location: { country: location, timezone_id: timeZone, localtime: time }, current: { weather_descriptions:weatherDescription,temperature:temp,precip,humidity,uv_index} }= body
+      callback(undefined, weatherDescription +', It is currently '+temp+ ' celcius degrees out. and '+humidity+'% humidity. '+'There is a '+precip+ '% chance of rain.'+'UV index is '+uv_index)
     }
 
   })
